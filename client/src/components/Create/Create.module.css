@@ -1,0 +1,10 @@
+.colum{
+    display: grid;
+    grid-template-columns: 1fr;
+     gap:5px;
+
+@media (max-width: 800px){
+
+}
+
+}

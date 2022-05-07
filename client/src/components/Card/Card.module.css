@@ -1,0 +1,42 @@
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    text-align: center;
+    background-color: rgba(43, 42, 42, 0.966);
+    border-radius: 20px;
+
+}
+
+
+.card:hover {
+    cursor: pointer;
+    box-shadow:
+        rgba(116, 116, 116, 0.5) 5px 3px,
+        rgba(116, 116, 116, 0.4) 10px 6px,
+        rgba(116, 116, 116, 0.3) 15px 9px;
+}
+
+
+.title {
+    color: rgb(255, 255, 255);
+    font-size: 25px;
+    text-transform: uppercase;
+}
+
+.img{
+max-width: 200px;
+}
+
+.description{
+    font-size: 25px;
+    padding-bottom: 20px;
+    color: white;
+    font-weight: lighter;
+}
+
+.imgContainer{
+width: 200px;
+height: 200px;
+padding: 25px;
+
+}

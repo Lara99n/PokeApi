@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+
+body{
+background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/33f87af1-69a0-4629-856b-bcd83431548e/d4o49yb-f6ce0e46-18c7-4b95-8604-dfc301eb506b.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzMzZjg3YWYxLTY5YTAtNDYyOS04NTZiLWJjZDgzNDMxNTQ4ZVwvZDRvNDl5Yi1mNmNlMGU0Ni0xOGM3LTRiOTUtODYwNC1kZmMzMDFlYjUwNmIucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.KiKNfV-WxEULYnv1ElRMXT9ThUvVj62LwiRCJp1fcxg");
+background-color: whitesmoke;
+background-size: cover;
+background-repeat: no-repeat;
+}
+.cardContainer {
+    display: grid;
+    grid-template-columns: auto auto auto auto ;
+    gap: 30px;
+    padding: 30px;
+}
+
+a {
+    text-decoration: none;
+}
+
+@media screen and (max-width: 800px) {
+    .cardContainer {
+    grid-template-columns: auto auto auto ;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .cardContainer {
+    grid-template-columns: auto;
+    }
+}
+
+
+.gif{
+    text-align: center;
+}
+
+.gif img{
+    width: 200px;
+  width: 200px;
+  display:block;
+position: absolute;
+left: 44% ;
+margin: auto;
+}
+
+.loading{
+font-family: 'Press Start 2P', cursive;
+ font-size: 20px;
+position: absolute;
+left: 23%;
+margin: 35vh;
+
+}

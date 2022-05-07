@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
+
+.body {
+    background-size: cover;
+    height: 100vh;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url("https://k60.kn3.net/taringa/F/8/2/5/2/7/ronaldojesus10/D2E.png");
+    background-color: #cccccc;
+   }
+
+.letra{
+cursor: default;
+position: relative;
+top: 30px;
+left: 0;
+right: 0;
+bottom: 0;
+height: 100px;
+display: block;
+font-weight: bold;
+animation: bounce 0.3s ease infinite alternate;
+font-family: 'Lato',
+sans-serif;
+font-size: 80px;
+color: #fff;
+text-align: center;
+line-height: 100px;
+text-shadow: 0 1px 0 #ccc,
+0 2px 0 #ccc,
+0 3px 0 #ccc,
+0 4px 0 #ccc,
+0 5px 0 #ccc,
+0 6px 0 transparent,
+0 7px 0 transparent,
+0 8px 0 transparent,
+0 9px 0 transparent,
+0 10px 10px rgba(0, 0, 0, 0.6);
+margin-bottom: 20vh;
+}
+
+@keyframes bounce {
+    100% {
+        top: -30px;
+
+        text-shadow: 0 1px 0 #ccc, 0 2px 0 #ccc, 0 3px 0 #ccc, 0 4px 0 #ccc,
+            0 5px 0 #ccc, 0 6px 0 #ccc, 0 7px 0 #ccc, 0 8px 0 #ccc, 0 9px 0 #ccc,
+            0 30px 30px rgba(0, 0, 0, 0.3);
+    }
+}
+
+
+.btn {
+    box-shadow: 1px -1px 0px 0px #fff6af;
+    background: linear-gradient(to bottom, #ffe74c 5%, #ffab23 100%);
+    background-color: #ffe74c;
+    border-radius: 11px;
+    border: 1px solid #ffaa22;
+    display: inline-block;
+    cursor: pointer;
+    color: #333333;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 6px 24px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #ffee66;
+ 
+}
+
+.btn:hover {
+    background: linear-gradient(to bottom, #ffab23 5%, #ffe74c 100%);
+    background-color: #ffab23;
+}
+
+
