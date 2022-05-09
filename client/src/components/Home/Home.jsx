@@ -49,6 +49,7 @@ function Home() {
 
   const pokemonsApiDb = (e) => {
     e.preventDefault();
+    setPaginaActual(1);
     dispatch(pokemonsDbOrPokeapi(e.target.value));
     setPokemon(e.target.value);
   };
@@ -56,12 +57,14 @@ function Home() {
   const handleName = (e) => {
     e.preventDefault();
     dispatch(ordenName(e.target.value));
+    setPaginaActual(1);
     setPokemon(e.target.value);
   };
 
   const handleFuerza = (e) => {
     e.preventDefault();
     dispatch(ordenFuerza(e.target.value));
+
     setPokemon(e.target.value);
   };
 
@@ -71,7 +74,6 @@ function Home() {
     setPaginaActual(1);
     setPokemon(e.target.value);
   };
-  console.log(allTypes);
 
   return (
     <div>
@@ -106,10 +108,10 @@ function Home() {
             </option>
           ))}
         </select>
+        <Link to={`/home/create`}>
+          <button className={Style.btn}>Crear tu Pokemon</button>
+        </Link>
       </div>
-      <Link to={`/home/create`}>
-        <button>Crear tu Pokemon</button>
-      </Link>
 
       <div>
         {allPokemon.length ? (

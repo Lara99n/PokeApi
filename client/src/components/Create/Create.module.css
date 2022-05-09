@@ -1,19 +1,92 @@
-.colum{
-    display: grid;
-    grid-template-columns: 1fr;
-     gap:5px;
-
-@media (max-width: 800px){
-
+.btn {
+    background-color: rgba(241, 249, 8, 0.696);
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    color: rgba(0, 0, 0, 0.801);
+    margin-top: 1rem;
+    margin-left: 1rem;
+    font-family: 'Rubik', sans-serif;
 }
 
+.btn:hover {
+    cursor: pointer;
+    background-color: rgba(206, 240, 10, 0.458);
 }
 
-.container {
+.otro {
+    background-color: rgb(246, 226, 11);
+    border: none;
+    padding: 10px;
+    border-radius: 50px;
+    color: rgba(0, 0, 0, 0.801);
+    margin-top: 2rem;
+    font-family: 'Rubik', sans-serif;
+}
 
+.otro:hover {
+    cursor: pointer;
+    
+    background-color: rgb(255, 255, 255);
+}
+
+.contenedor {
+    background-color: rgba(240, 240, 240, 0.136);
+    border-radius: 10px 10px 10px 10px;
+    
+}
+
+.palabra {
+    color: black;
+    font-family: 'Rubik', sans-serif;
+}
+
+.todo {
     display: flex;
-    align-content: center;
-    align-items: center;
+    justify-content: center;
     flex-direction: column;
+    align-items: center;
+    height: 600px;
+    width: 600px;
+    background-color: rgba(169, 222, 155, 0.308);
+    border: 1px solid aliceblue;
+    border-radius: 14px;
+    transition: transform 0.15s;
+    margin: 0 auto;
+}
 
+.todo:hover {
+    cursor: pointer;
+    transform: scale(1.0);
+    filter: drop-shadow(0 0 20px rgba(252, 252, 252, 0.742));
+}
+
+.title{
+margin-top:auto;
+margin: auto;
+text-align: center;
+font-family: 'Cinzel', serif;
+    font-family: 'Fira Sans', sans-serif;
+    font-family: 'Tapestry', cursive;
+}
+
+.tipos {
+    background-color: rgba(0, 0, 0, 0.223);
+    border: none;
+    padding: 10px;
+    height:7%;
+    border-radius: 10px;
+    color: rgba(0, 0, 0, 0.801);    
+}
+
+.tipos:hover {
+    cursor: pointer;
+}
+
+p{
+color: rgb(255, 0, 0);
+display: flex;
+border-radius: 10px;
+padding: 10px 15px 10px 15px;
+        
 }

@@ -42,35 +42,38 @@ const rootReducer = (state = initialState, action) => {
         pokemon: action.payload === "All" ? info : infoCreated,
       };
 
+    case ACCIONES.FILTER_POKE_TYPE:
+      const typesInfo = state.allPokemons;
+      const infoTypes =
+        action.payload === "All"
+          ? typesInfo
+          : typesInfo.filter((e) =>
+              e.types.find((e) => e.name === action.payload)
+            );
+
+      return {
+        ...state,
+        pokemon: infoTypes,
+      };
+
     case ACCIONES.ORDEN_NAME:
-      let ordenAlf = [...state.allPokemons];
-
-      if (action.payload === "asc") {
-        ordenAlf.sort((a, b) => {
-          if (a.name > b.name) return 1;
-          if (b.name > a.name) return -1;
-
-          return 0;
-        });
-
-        return {
-          ...state,
-          pokemon: ordenAlf,
-        };
-      }
-      if (action.payload === "desc") {
-        ordenAlf.sort((a, b) => {
-          if (a.name > b.name) return -1;
-          if (b.name > a.name) return 1;
-          return 0;
-        });
-
-        return {
-          ...state,
-          pokemon: ordenAlf,
-        };
-      }
-
+      let ordenAlf = [...state.pokemon];
+      const alfabetico =
+        action.payload === "asc"
+          ? ordenAlf.sort((a, b) => {
+              if (a.name > b.name) return 1;
+              if (b.name > a.name) return -1;
+              return 0;
+            })
+          : ordenAlf.sort((a, b) => {
+              if (a.name > b.name) return -1;
+              if (b.name > a.name) return 1;
+              return 0;
+            });
+      return {
+        ...state,
+        pokemon: alfabetico,
+      };
     case ACCIONES.ORDEN_FUERZA:
       const infoFuerza = [...state.pokemon];
       const ordenFuerza =
@@ -89,18 +92,6 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         types: action.payload,
-      };
-
-    case ACCIONES.FILTER_POKE_TYPE:
-      const typesInfo = state.allPokemons;
-      const infoTypes =
-        action.payload === "All"
-          ? typesInfo
-          : typesInfo.filter((e) => e.types?.includes(action.payload));
-
-      return {
-        ...state,
-        types: infoTypes,
       };
 
     case ACCIONES.POKE_DETAIL:

@@ -1,17 +1,67 @@
 .gif {
     text-align: center;
-
 }
 
 .gif img {
     width: 200px;
 }
 
-.container{
-    
-        display: flex;
-        align-content: center;
-        align-items: center;
-        flex-direction: column;
-    
+
+.detalle {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn {
+    background-color: rgb(16, 66, 100);
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    color: rgba(247, 239, 239, 0.801);
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
+
+.btn:hover {
+    cursor: pointer;
+    background-color: rgb(34, 32, 129);
+}
+
+.carta {
+    display: flex;
+    flex-direction: column;
+    height: 900px;
+    width: 600px;
+    background-color: rgba(125, 187, 241, 0.308);
+    border: 1px solid aliceblue;
+    border-radius: 14px;
+    transition: transform 0.15s;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    font-family: 'Bangers', cursive;
+        
+}
+
+.carta:hover {
+    cursor: pointer;
+    transform: scale(1.04);
+    filter: drop-shadow(0 0 15px rgb(243, 221, 221));
+}
+
+.titulo {
+    color: rgb(16, 216, 13);
+    background-color: rgba(255, 255, 255, 0.255);
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+
+.tipos {
+    text-transform: capitalize;
+    margin-top: 2rem;
+}
+
+.palabra {
+    padding: -1.5rem;
 }

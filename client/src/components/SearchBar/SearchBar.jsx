@@ -8,7 +8,7 @@ import Style from "./Searchbar.module.css";
 //useSelector --> ayuda a extrar info del state de la store de redux. es llamado cada q el hook sea actualizado
 
 function SearchBar() {
-  const [name, setName] = useState(" ");
+  const [name, setName] = useState("");
 
   const dispatch = useDispatch();
 
@@ -17,27 +17,33 @@ function SearchBar() {
     if (name) {
       dispatch(buscarNombrePokemon(name));
       console.log("enviado");
-      setName({ name: "" });
+      setName("");
     }
   };
 
   const handlChange = (e) => {
     e.preventDefault(e);
-    setName(e.target.value);
+    setName(e.target.value.toLowerCase());
   };
 
   return (
     <div>
       <br />
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <input
-          type="text"
-          placeholder="Buscar Pokemon :)"
-          onChange={(e) => handlChange(e)}
-          className={Style.contenedor}
-        />
-        <button className={Style.btn}>Enviar</button>
-      </form>
+
+      <input
+        type="text"
+        placeholder="Buscar Pokemon :)"
+        value={name}
+        className={Style.contenedor}
+        onChange={(e) => handlChange(e)}
+      />
+      <button
+        type="submit"
+        onClick={(e) => handleSubmit(e)}
+        className={Style.btn}
+      >
+        Enviar
+      </button>
     </div>
   );
 }

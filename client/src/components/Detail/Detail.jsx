@@ -19,29 +19,43 @@ const Detail = () => {
   const detail = useSelector((state) => state.detalle);
 
   return (
-    <div>
+    <div className={Style.detalle}>
+      <br />
       {detail && detail ? (
-        <div className={Style.container}>
-          <h1> Mi nombre es {detail.name}</h1>
-          <h2>Vida: {detail.life}</h2>
-          <h2>Fuerza: {detail.strength}</h2>
-          <h2>Defensa: {detail.defense}</h2>
-          <h2>Velocidad: {detail.speed}</h2>
-          <h2> Altura: {detail.height}</h2>
-          <h2>Peso: {detail.weight}</h2>
-          <img src={detail.image} alt="cargando" width="200px" height="250px" />
-          <div>
-            <h3>Tipos:</h3>
+        <div className={Style.detalle}>
+          <div className={Style.titulo}>
+            <h1>¡Un {detail.name} salvaje ha aparecido!</h1>
+          </div>
+          <div className={Style.carta}>
+            <h3> Mi nombre es {detail.name}!!!</h3>
+            <h3> Tengo {detail.life} de vida!! </h3>
+            <h3>Tengo {detail.strength} de fuerza!!</h3>
+            <h3> Tengo {detail.defense} de defensa!</h3>
+            <h3> Tengo {detail.speed} de velocidad!!</h3>
+            <h3> Mi altura es {detail.height} metros!!</h3>
+            <h3> Mi peso es {detail.weight} kg!!</h3>
+            <img
+              src={
+                detail.image
+                  ? detail.image
+                  : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/71.svg"
+              }
+              alt="cargando"
+              width="200px"
+              height="250px"
+            />
+            <h3>Mis tipos son: </h3>
             {detail.types?.map((e, index) => {
-              return <h3 key={index}>{e.name}</h3>;
+              return <h3 key={index}>{e.name ? e.name : e}</h3>;
             })}
           </div>
         </div>
       ) : (
         <p> Loading Pokemon..</p>
       )}
+      <br />
       <Link to="/home">
-        <button>Volver al Home</button>
+        <button className={Style.btn}>Volver al Home</button>
       </Link>
       <br />
     </div>
