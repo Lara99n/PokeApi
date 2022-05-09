@@ -29,6 +29,10 @@ router.post("/", async (req, res, next) => {
     array.push(newPokemon);
     array.push(types);
 
+    if (types.length > 2) {
+      res.json("Solo se aceptan 2 tipos");
+    }
+
     await newPokemon.addType(type);
     res.send(array);
   } catch (error) {

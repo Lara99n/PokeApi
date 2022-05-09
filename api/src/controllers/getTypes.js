@@ -2,6 +2,7 @@ const fetch = require("node-fetch");
 const { Types } = require("../db");
 
 const express = require("express");
+
 const router = express.Router();
 
 router.get("/", async (req, res, next) => {
@@ -23,10 +24,10 @@ router.get("/", async (req, res, next) => {
         },
       });
     });
-    const mapeo = await Types.findAll({
+    const type = await Types.findAll({
       attributes: ["name"],
     });
-    res.json(mapeo);
+    res.json(type);
   } catch (error) {
     next(error);
   }

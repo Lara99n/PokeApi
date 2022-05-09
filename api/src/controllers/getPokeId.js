@@ -25,20 +25,10 @@ router.get("/:id", async (req, res, next) => {
       return res.status(200).send(pokemon);
     } else {
       const db = await Pokemon.findByPk(id, {
-        attributes: [
-          "name",
-          "life",
-          "strength",
-          "defense",
-          "speed",
-          "height",
-          "weight",
-          "image",
-        ],
         include: {
           model: Types,
+          require: true,
           attributes: ["name"],
-          through: { attributes: [] },
         },
       });
       res.status(200).send(db);
