@@ -2,11 +2,12 @@ import axios from "axios";
 
 export const ALL_POKEMONS = "POKEMONS";
 export const BUSCAR_NOMBRE = "BUSCAR_NOMBRE";
-export const ORDEN_POKETYPE = "ORDEN_POKETYPE";
-export const POKETYPE = "POKETYPE";
 export const POKEMON_DB_API = " POKEMON_DB_API";
 export const ORDEN_NAME = "ORDEN_NAME";
 export const ORDEN_FUERZA = "ORDEN_FUERZA";
+
+export const POKE_TYPE = "POKE_TYPE";
+export const FILTER_POKE_TYPE = " FILTER_POKE_TYPE";
 
 export const POKE_DETAIL = "POKE_DETAIL";
 export const POKE_CREATE = "POKE_CREATE";
@@ -50,25 +51,17 @@ export function buscarNombrePokemon(name) {
 }
 
 export function ordenName(payload) {
-  try {
-    return {
-      type: ORDEN_NAME,
-      payload,
-    };
-  } catch (error) {
-    console.log(error);
-  }
+  return {
+    type: ORDEN_NAME,
+    payload,
+  };
 }
 
 export function ordenFuerza(payload) {
-  try {
-    return {
-      type: ORDEN_FUERZA,
-      payload,
-    };
-  } catch (error) {
-    console.log(error);
-  }
+  return {
+    type: ORDEN_FUERZA,
+    payload,
+  };
 }
 
 export function pokemonsDbOrPokeapi(payload) {
@@ -104,5 +97,27 @@ export function pokeCreate(payload) {
     } catch (err) {
       console.log(err);
     }
+  };
+}
+
+export function pokeTypes() {
+  return async (dispatch) => {
+    try {
+      let obtener = await axios(`http://localhost:3001/types`);
+
+      return dispatch({
+        type: POKE_TYPE,
+        payload: obtener.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+export function filterPokeTypes(payload) {
+  return {
+    type: FILTER_POKE_TYPE,
+    payload,
   };
 }

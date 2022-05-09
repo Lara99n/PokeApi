@@ -37,18 +37,44 @@ a {
 
 .gif img{
     width: 200px;
-  width: 200px;
-  display:block;
-position: absolute;
-left: 44% ;
-margin: auto;
+    width: 230px;
+    margin-bottom: 74%;
+
 }
 
 .loading{
-font-family: 'Press Start 2P', cursive;
- font-size: 20px;
-position: absolute;
-left: 23%;
-margin: 35vh;
+   font-family: 'Press Start 2P', cursive;
+   font-size: 20px;
+   margin-top: 0.5%;
 
+
+}
+.container{
+display: flex;
+align-items: center;
+flex-direction: column;
+justify-content: flex-end;
+width: 100vw;
+height: 80vh;
+
+}
+
+
+.separacion {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 3em;
+}
+
+.btn {
+    background-color: rgb(16, 66, 100);
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    color: rgba(247, 239, 239, 0.801);
+}
+
+.btn:hover {
+    cursor: pointer;
+    background-color: rgb(34, 32, 129);
 }

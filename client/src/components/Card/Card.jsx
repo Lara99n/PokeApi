@@ -8,9 +8,9 @@ const Card = ({ image, name, types }) => {
       </div>
       <h2 className={Style.title}>{name}</h2>
       <h4 className={Style.description}>
-        {types.map((e) => (
-          <div key={e}>
-            <p>{e}</p>
+        {types.map((e, index) => (
+          <div key={index}>
+            <i>{e.name}</i>
           </div>
         ))}
       </h4>

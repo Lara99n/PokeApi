@@ -1,4 +1,22 @@
+
 .btn {
     cursor: pointer;
+    background-color: rgb(0, 0, 0);
+    border: none;
+    padding: 8px;
+    border-radius: 0px 10px 10px 0px;
+    color: rgb(255, 255, 255);
+    
+}
 
+.btn:hover {
+    cursor: pointer;
+    background-color: rgba(234, 255, 0, 0.304);
+}
+
+.contenedor {
+    background-color: rgba(255, 255, 255, 0.151);
+    height: 26px;
+    border-radius: 10px 0px 0px 10px;
+    padding-left: 0.5rem;
 }

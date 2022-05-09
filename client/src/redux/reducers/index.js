@@ -10,8 +10,8 @@ import * as ACCIONES from "../actions";
 const initialState = {
   pokemon: [],
   allPokemons: [],
-  types: [],
   detalle: [],
+  types: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -29,26 +29,6 @@ const rootReducer = (state = initialState, action) => {
         pokemon: action.payload,
       };
 
-    case ACCIONES.POKETYPE:
-      return {
-        ...state,
-        types: action.payload,
-      };
-
-    case ACCIONES.ORDEN_POKETYPE:
-      const infoTypes = state.types;
-      const typeFilter =
-        action.payload === "All"
-          ? infoTypes
-          : infoTypes.filter((e) =>
-              e.types.find((e) => e.name.includes(action.payload))
-            );
-
-      return {
-        ...state,
-        pokemon: typeFilter,
-      };
-
     case ACCIONES.POKEMON_DB_API:
       const info = state.allPokemons;
 
@@ -63,31 +43,66 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case ACCIONES.ORDEN_NAME:
-      const ordenAlf =
-        action.payload === "All"
-          ? state.pokemon
-          : action.payload === "asc"
-          ? state.pokemon.sort((a, b) => a.name.localeCompare(b.name))
-          : state.pokemon.sort((a, b) => b.name.localeCompare(a.name));
-      //retorna un número indicando si una cadena de
-      //carateres de referencia va antes, después o si es la misma que la cadena dada en orden alfabético.
-      return {
-        ...state,
-        pokemon: [...ordenAlf],
-      };
+      let ordenAlf = [...state.allPokemons];
+
+      if (action.payload === "asc") {
+        ordenAlf.sort((a, b) => {
+          if (a.name > b.name) return 1;
+          if (b.name > a.name) return -1;
+
+          return 0;
+        });
+
+        return {
+          ...state,
+          pokemon: ordenAlf,
+        };
+      }
+      if (action.payload === "desc") {
+        ordenAlf.sort((a, b) => {
+          if (a.name > b.name) return -1;
+          if (b.name > a.name) return 1;
+          return 0;
+        });
+
+        return {
+          ...state,
+          pokemon: ordenAlf,
+        };
+      }
 
     case ACCIONES.ORDEN_FUERZA:
+      const infoFuerza = [...state.pokemon];
       const ordenFuerza =
         action.payload === "All"
-          ? state.pokemon
+          ? infoFuerza
           : action.payload === "max"
-          ? state.pokemon.sort((a, b) => a.strength - b.strength)
-          : state.pokemon.sort((a, b) => b.strength - a.strength);
+          ? infoFuerza.sort((a, b) => b.strength - a.strength)
+          : infoFuerza.sort((a, b) => a.strength - b.strength);
 
       return {
         ...state,
-        pokemon: [...ordenFuerza],
+        pokemon: ordenFuerza,
       };
+
+    case ACCIONES.POKE_TYPE:
+      return {
+        ...state,
+        types: action.payload,
+      };
+
+    case ACCIONES.FILTER_POKE_TYPE:
+      const typesInfo = state.allPokemons;
+      const infoTypes =
+        action.payload === "All"
+          ? typesInfo
+          : typesInfo.filter((e) => e.types?.includes(action.payload));
+
+      return {
+        ...state,
+        types: infoTypes,
+      };
+
     case ACCIONES.POKE_DETAIL:
       return {
         ...state,
@@ -97,7 +112,6 @@ const rootReducer = (state = initialState, action) => {
     case ACCIONES.POKE_CREATE:
       return {
         ...state,
-        create: action.payload,
       };
 
     default:
