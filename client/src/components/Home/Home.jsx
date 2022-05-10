@@ -77,41 +77,45 @@ function Home() {
 
   return (
     <div>
-      <SearchBar />
+      {allPokemon.length > 0 ? <SearchBar /> : <div></div>}
 
-      <div className={Style.separacion}>
-        <select onChange={(e) => pokemonsApiDb(e)} className={Style.btn}>
-          <option> Pokemones:</option>
-          <option value="All"> Todos </option>
-          <option value="api"> Originales </option>
-          <option value="created"> Creados por mi </option>
-        </select>
-        <select onChange={(e) => handleName(e)} className={Style.btn}>
-          <option value="All"> Ordenar por nombre</option>
-          <option value="asc">A-Z</option>
-          <option value="desc">Z-A</option>
-        </select>
+      {allPokemon.length > 0 ? (
+        <div className={Style.separacion}>
+          <select onChange={(e) => pokemonsApiDb(e)} className={Style.btn}>
+            <option> Pokemones:</option>
+            <option value="All"> Todos </option>
+            <option value="api"> Originales </option>
+            <option value="created"> Creados por mi </option>
+          </select>
+          <select onChange={(e) => handleName(e)} className={Style.btn}>
+            <option value="All"> Ordenar por nombre</option>
+            <option value="asc">A-Z</option>
+            <option value="desc">Z-A</option>
+          </select>
 
-        <select onChange={(e) => handleFuerza(e)} className={Style.btn}>
-          <option value="All"> Ordenar por Fuerza</option>
-          <option value="max"> + Fuerza</option>
-          <option value="min"> - Fuerza</option>
-        </select>
+          <select onChange={(e) => handleFuerza(e)} className={Style.btn}>
+            <option value="All"> Ordenar por Fuerza</option>
+            <option value="max"> + Fuerza</option>
+            <option value="min"> - Fuerza</option>
+          </select>
 
-        <select onChange={(e) => handleTypes(e)} className={Style.btn}>
-          <option>Tipo de Pokemon</option>
-          <option value="All">Todos</option>
+          <select onChange={(e) => handleTypes(e)} className={Style.btn}>
+            <option>Tipo de Pokemon</option>
+            <option value="All">Todos</option>
 
-          {allTypes?.map((e) => (
-            <option key={e.name} value={e.name}>
-              {e.name}
-            </option>
-          ))}
-        </select>
-        <Link to={`/home/create`}>
-          <button className={Style.btn}>Crear tu Pokemon</button>
-        </Link>
-      </div>
+            {allTypes?.map((e) => (
+              <option key={e.name} value={e.name}>
+                {e.name}
+              </option>
+            ))}
+          </select>
+          <Link to={`/home/create`}>
+            <button className={Style.btn}>Crear tu Pokemon</button>
+          </Link>
+        </div>
+      ) : (
+        <div></div>
+      )}
 
       <div>
         {allPokemon.length ? (
@@ -132,13 +136,12 @@ function Home() {
             })}
           </div>
         ) : (
-          <div className={Style.container}>
+          <div>
             <div className={Style.gif}>
               <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a50d005c-a1fa-4667-acc0-f9e5a6cc3ccf/d1ylrxl-46951a6b-dec6-4e8e-bda1-0e88842f4dcf.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2E1MGQwMDVjLWExZmEtNDY2Ny1hY2MwLWY5ZTVhNmNjM2NjZlwvZDF5bHJ4bC00Njk1MWE2Yi1kZWM2LTRlOGUtYmRhMS0wZTg4ODQyZjRkY2YuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.iDYW-R35Cdft13_uDreIjtgfrRw1EveW6_S7mYpTGnc" />
-            </div>
-
-            <div className={Style.loading}>
-              <h1>Loading Pokemons...</h1>
+              <div className={Style.loading}>
+                <h1>Loading Pokemons...</h1>
+              </div>
             </div>
           </div>
         )}

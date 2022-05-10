@@ -32,8 +32,8 @@ const Detail = () => {
             <h3>Tengo {detail.strength} de fuerza!!</h3>
             <h3> Tengo {detail.defense} de defensa!</h3>
             <h3> Tengo {detail.speed} de velocidad!!</h3>
-            <h3> Mi altura es {detail.height} metros!!</h3>
-            <h3> Mi peso es {detail.weight} kg!!</h3>
+            <h3> Mi altura es {detail.height * 10} centimetros!!</h3>
+            <h3> Mi peso es {detail.weight / 10} kg!!</h3>
             <img
               src={
                 detail.image

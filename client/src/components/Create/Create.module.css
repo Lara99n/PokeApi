@@ -46,7 +46,7 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    height: 600px;
+    height: 570px;
     width: 600px;
     background-color: rgba(169, 222, 155, 0.308);
     border: 1px solid aliceblue;
@@ -76,7 +76,9 @@ font-family: 'Cinzel', serif;
     padding: 10px;
     height:7%;
     border-radius: 10px;
-    color: rgba(0, 0, 0, 0.801);    
+    color: rgba(0, 0, 0, 0.801);
+    display: block;
+    border: 1px solid rgb(255, 255, 255);
 }
 
 .tipos:hover {
@@ -87,6 +89,32 @@ p{
 color: rgb(255, 0, 0);
 display: flex;
 border-radius: 10px;
-padding: 10px 15px 10px 15px;
-        
+padding: 10px 15px 10px 15px;     
+}
+
+.myButton {
+    background-color: #f2f2f21e;
+    border: 1px solid #ff0000;
+    display: inline-block;
+    cursor: pointer;
+    color: #ff0000;
+    font-family: Georgia;
+    font-size: 10px;
+    padding: 2px 3px;
+    text-decoration: none;
+}
+
+.myButton:hover {
+    background-color: #ffffff;
+}
+
+.myButton:active {
+    position: relative;
+    top: 1px;
+}
+
+
+.option {
+    font-size: 15px;
+    font-family: 'Times New Roman', Times, serif
 }

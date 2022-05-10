@@ -42,7 +42,7 @@ function SearchBar() {
         onClick={(e) => handleSubmit(e)}
         className={Style.btn}
       >
-        Enviar
+        Buscar
       </button>
     </div>
   );

@@ -33,30 +33,24 @@ a {
 
 .gif{
     text-align: center;
+    margin: auto;
+    margin-top: 4%;
+
 }
 
 .gif img{
-    width: 200px;
-    width: 230px;
-    margin-bottom: 65%;
-    flex-direction: colum;
+    width: 400px;
+    width: 284px;
+    
 
 }
 
 .loading{
    font-family: 'Press Start 2P', cursive;
-   font-size: 20px;
-   margin-top: 1%;
-
-
+   font-size: 25px;
+   margin-top: 0.5%;
 }
-.container{
-display: flex;
-align-items: center;
-width: 70vw;
-height:80vh;
 
-}
 
 
 .separacion {
@@ -66,7 +60,7 @@ height:80vh;
 }
 
 .btn {
-    background-color: rgb(233, 218, 10);
+    background-color: rgba(254, 246, 22, 0.652);
     border: none;
     padding: 10px;
     border-radius: 10px;
@@ -75,5 +69,7 @@ height:80vh;
 
 .btn:hover {
     cursor: pointer;
-    background-color: rgba(192, 192, 212, 0.404);
+    background-color: rgba(65, 118, 198, 0.497);
+    
+   
 }
