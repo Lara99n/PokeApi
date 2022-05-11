@@ -10,14 +10,15 @@ const validate = (state) => {
   let errors = {};
 
   if (!state.name.toLowerCase()) {
-    errors.name = "El nombre es requerido";
+    errors.name =
+      "El nombre es requerido, solo puede llevar letras y su largo debe ser menor a 20 ";
   } else if (!state.life) {
-    errors.life = "La vida es requerida,  debe ser mayor a 0 y menor a 200";
+    errors.life = "La vida es requerida, debe ser mayor a 0 y menor a 200";
   } else if (!state.strength) {
     errors.strength =
       "La fuerza es requerida debe ser mayor a 0 y menor a 1000";
   } else if (!state.defense) {
-    errors.defense = "La defensa es requerida ebe ser mayor a 0 y menor a 200";
+    errors.defense = "La defensa es requerida debe ser mayor a 0 y menor a 200";
   } else if (!state.speed) {
     errors.speed = "La velocidad es requerida debe ser mayor a 0 y menor a 500";
   } else if (!state.height) {
@@ -68,13 +69,11 @@ const Create = () => {
       })
     );
   };
-  //cada vez q ejecutes esta funcion a mi estado state ademas de lo que tiene agregale el target value de lo que este modificando.
-  //la idea es q a medida que va a ejecutandose se vaya agregando en mi useState.
 
   const handleTypes = (e) => {
     setState({
       ...state,
-      types: [...state.types, e.target.value], //traeme lo que ya habia y concatenale el nuevo valor
+      types: [...state.types, e.target.value],
     });
     setError(
       validate({
@@ -279,16 +278,16 @@ const Create = () => {
         {errors.types && <p>{errors.types}</p>}
 
         <div className={Style.option}>
-          {state.types.map((el, index) => (
+          {state.types.map((e, index) => (
             <div key={index}>
               <button
                 className={Style.myButton}
                 type="button"
-                onClick={() => handleDelete(el)}
+                onClick={() => handleDelete(e)}
               >
                 X
               </button>
-              <span>{el}</span>
+              <span>{e}</span>
             </div>
           ))}
         </div>

@@ -12,13 +12,6 @@ export const FILTER_POKE_TYPE = " FILTER_POKE_TYPE";
 export const POKE_DETAIL = "POKE_DETAIL";
 export const POKE_CREATE = "POKE_CREATE";
 
-//1ER PASO DE UN CICLO DE REDUX
-//Las acction son cargas de informacion(payload=carga util) se encargan de enviar informacion de
-// mi front o mis components a mi store de redux.
-//Son la unica fuente de informacion para la store.
-//El comando para enviar una action a la store es store.dispatch().
-// Tiene que contener una KEY = TYPE.
-
 export function todosPokemons() {
   return async (dispatch) => {
     try {
@@ -71,6 +64,12 @@ export function pokemonsDbOrPokeapi(payload) {
   };
 }
 
+export function filterPokeTypes(payload) {
+  return {
+    type: FILTER_POKE_TYPE,
+    payload,
+  };
+}
 export function pokeDetail(id) {
   return async (dispatch) => {
     try {
@@ -85,21 +84,6 @@ export function pokeDetail(id) {
     }
   };
 }
-export function pokeCreate(payload) {
-  return async (dispatch) => {
-    try {
-      let obtener = await axios.post("http://localhost:3001/pokemons", payload);
-
-      return dispatch({
-        type: POKE_CREATE,
-        payload: obtener.data,
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
-}
-
 export function pokeTypes() {
   return async (dispatch) => {
     try {
@@ -115,9 +99,17 @@ export function pokeTypes() {
   };
 }
 
-export function filterPokeTypes(payload) {
-  return {
-    type: FILTER_POKE_TYPE,
-    payload,
+export function pokeCreate(payload) {
+  return async (dispatch) => {
+    try {
+      let obtener = await axios.post("http://localhost:3001/pokemons", payload);
+
+      return dispatch({
+        type: POKE_CREATE,
+        payload: obtener.data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
 }

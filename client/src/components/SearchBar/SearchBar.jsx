@@ -4,9 +4,6 @@ import { buscarNombrePokemon } from "../../redux/actions";
 
 import Style from "./Searchbar.module.css";
 
-//useDispatch --> hace referencia a dispatch usado para disparar las acciones de la store
-//useSelector --> ayuda a extrar info del state de la store de redux. es llamado cada q el hook sea actualizado
-
 function SearchBar() {
   const [name, setName] = useState("");
 
@@ -22,7 +19,7 @@ function SearchBar() {
   };
 
   const handlChange = (e) => {
-    e.preventDefault(e);
+    e.preventDefault();
     setName(e.target.value.toLowerCase());
   };
 
@@ -48,12 +45,3 @@ function SearchBar() {
   );
 }
 export default SearchBar;
-
-/* 
-Ruta principal: debe contener
-[ ] Input de búsqueda para encontrar pokemons por nombre (La búsqueda será exacta,
- es decir solo encontrará al pokemon si se coloca el nombre completo)
-*/
-
-//necesito un manejar de estados, para que mi onchange y onsubmit funcionen.
-//un useDispatch

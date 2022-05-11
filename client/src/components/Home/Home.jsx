@@ -24,21 +24,18 @@ function Home() {
 
   const allTypes = useSelector((state) => state.types);
 
-  //---------------------------paginado------------------------------
-  const [paginaActual, setPaginaActual] = useState(1); //mi pagina actual
-  const [pokemonsPagina] = useState(12); //cuantos quiero por pagina
-  const indiceUltimoPokemons = paginaActual * pokemonsPagina; //seteo el indice del ultimo pokemon, y le digo que sobre la pagina actual multiplique la cantidad de pokemons por pagina
-  const indicePrimerPokemon = indiceUltimoPokemons - pokemonsPagina; // indicePrimerPokemon: seteo el indice del primer pokemon porque necesito tener en cada pagina el indice de mi primer pokemon, no va a ser siempre igual, va a ir sumandose de 1 en 1.  indiceUltimoPokemons - pokemonsPagina: El indice del ultimo personaje menos la cantidad de personajes que tengo por pagina me da el indice del primer pesonaje.
+  const [paginaActual, setPaginaActual] = useState(1);
+  const [pokemonsPagina] = useState(12);
+  const indiceUltimoPokemons = paginaActual * pokemonsPagina;
+  const indicePrimerPokemon = indiceUltimoPokemons - pokemonsPagina;
   const pokemonsActuales = allPokemon.slice(
     indicePrimerPokemon,
     indiceUltimoPokemons
-  ); //va a ir guardando cuales son los personajes que hay que renderizar dependiendo la pagina. Entonces le digo que a todos los personajes los corte con el indice del rpimer personaje de esa pagina y el ultimo.
+  );
 
-  //esto va a setear la paigna en el numero que yo vaya apretando.
   const paginado = (numPagina) => {
     setPaginaActual(numPagina);
   };
-  //---------------------------paginado------------------------------
 
   const [pokemon, setPokemon] = useState("");
 
@@ -46,13 +43,6 @@ function Home() {
     dispatch(todosPokemons());
     dispatch(pokeTypes());
   }, [dispatch]);
-
-  const pokemonsApiDb = (e) => {
-    e.preventDefault();
-    setPaginaActual(1);
-    dispatch(pokemonsDbOrPokeapi(e.target.value));
-    setPokemon(e.target.value);
-  };
 
   const handleName = (e) => {
     e.preventDefault();
@@ -64,7 +54,13 @@ function Home() {
   const handleFuerza = (e) => {
     e.preventDefault();
     dispatch(ordenFuerza(e.target.value));
+    setPokemon(e.target.value);
+  };
 
+  const pokemonsApiDb = (e) => {
+    e.preventDefault();
+    dispatch(pokemonsDbOrPokeapi(e.target.value));
+    setPaginaActual(1);
     setPokemon(e.target.value);
   };
 
@@ -74,6 +70,7 @@ function Home() {
     setPaginaActual(1);
     setPokemon(e.target.value);
   };
+  console.log(pokemon);
 
   return (
     <div>
@@ -81,12 +78,6 @@ function Home() {
 
       {allPokemon.length > 0 ? (
         <div className={Style.separacion}>
-          <select onChange={(e) => pokemonsApiDb(e)} className={Style.btn}>
-            <option> Pokemones:</option>
-            <option value="All"> Todos </option>
-            <option value="api"> Originales </option>
-            <option value="created"> Creados por mi </option>
-          </select>
           <select onChange={(e) => handleName(e)} className={Style.btn}>
             <option value="All"> Ordenar por nombre</option>
             <option value="asc">A-Z</option>
@@ -97,6 +88,13 @@ function Home() {
             <option value="All"> Ordenar por Fuerza</option>
             <option value="max"> + Fuerza</option>
             <option value="min"> - Fuerza</option>
+          </select>
+
+          <select onChange={(e) => pokemonsApiDb(e)} className={Style.btn}>
+            <option> Pokemones:</option>
+            <option value="All"> Todos </option>
+            <option value="api"> Originales </option>
+            <option value="created"> Creados por mi </option>
           </select>
 
           <select onChange={(e) => handleTypes(e)} className={Style.btn}>

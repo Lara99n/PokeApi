@@ -34,20 +34,20 @@ a {
 .gif{
     text-align: center;
     margin: auto;
-    margin-top: 4%;
+    margin-top: 6%;
 
 }
 
 .gif img{
     width: 400px;
-    width: 284px;
+    width: 250px;
     
 
 }
 
 .loading{
    font-family: 'Press Start 2P', cursive;
-   font-size: 25px;
+   font-size: 23px;
    margin-top: 0.5%;
 }
 
