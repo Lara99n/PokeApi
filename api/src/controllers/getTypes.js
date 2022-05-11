@@ -15,7 +15,6 @@ router.get("/", async (req, res, next) => {
 
     typeInfo.map(async (m) => {
       const [instance, created] = await Types.findOrCreate({
-        //instance me devuelve el modelo, y el creted me devuelve un booleano.
         where: {
           name: m.name,
         },

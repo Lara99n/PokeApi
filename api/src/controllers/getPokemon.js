@@ -11,8 +11,6 @@ const getApiInfo = async () => {
 
   const dataUrl = await apiUrl.data.results.map((el) => el.url);
 
-  //uso Primise.all() para que hasta que no se finalicen las otras promesas nose genera esta nueva promesa
-
   const result = await Promise.all(dataUrl.map(axios.get));
 
   const resultFinal = result.map((el) => {
@@ -42,9 +40,6 @@ const getDbInfo = async () => {
     include: {
       model: Types,
       attributes: ["name"],
-      through: {
-        attributes: [],
-      },
     },
   });
 };

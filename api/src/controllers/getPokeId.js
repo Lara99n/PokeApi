@@ -23,16 +23,14 @@ router.get("/:id", async (req, res, next) => {
       };
 
       return res.status(200).send(pokemon);
-    } else {
-      const db = await Pokemon.findByPk(id, {
-        include: {
-          model: Types,
-          require: true,
-          attributes: ["name"],
-        },
-      });
-      res.status(200).send(db);
     }
+    const db = await Pokemon.findByPk(id, {
+      include: {
+        model: Types,
+        attributes: ["name"],
+      },
+    });
+    res.status(200).send(db);
   } catch (error) {
     next(error);
   }
