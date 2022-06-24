@@ -37,7 +37,7 @@ function Home() {
     setPaginaActual(numPagina);
   };
 
-  const [pokemon, setPokemon] = useState("");
+  const [setPokemon] = useState("");
 
   useEffect(() => {
     dispatch(todosPokemons());
@@ -48,44 +48,44 @@ function Home() {
     e.preventDefault();
     dispatch(ordenName(e.target.value));
     setPaginaActual(1);
-    setPokemon(e.target.value);
   };
 
   const handleFuerza = (e) => {
     e.preventDefault();
     dispatch(ordenFuerza(e.target.value));
-    setPokemon(e.target.value);
+    setPaginaActual(1);
   };
 
   const pokemonsApiDb = (e) => {
     e.preventDefault();
     dispatch(pokemonsDbOrPokeapi(e.target.value));
     setPaginaActual(1);
-    setPokemon(e.target.value);
   };
 
   const handleTypes = (e) => {
     e.preventDefault();
     dispatch(filterPokeTypes(e.target.value));
     setPaginaActual(1);
-    setPokemon(e.target.value);
   };
-  console.log(pokemon);
 
   return (
     <div>
-      {allPokemon.length > 0 ? <SearchBar /> : <div></div>}
+      {allPokemon.length > 0 ? (
+        <SearchBar setPaginaActual={setPaginaActual} />
+      ) : (
+        <div></div>
+      )}
 
       {allPokemon.length > 0 ? (
         <div className={Style.separacion}>
           <select onChange={(e) => handleName(e)} className={Style.btn}>
-            <option value="All"> Ordenar por nombre</option>
+            <option>Orden por Nombre</option>
             <option value="asc">A-Z</option>
             <option value="desc">Z-A</option>
           </select>
 
           <select onChange={(e) => handleFuerza(e)} className={Style.btn}>
-            <option value="All"> Ordenar por Fuerza</option>
+            <option>Ordenar por Fuerza </option>
             <option value="max"> + Fuerza</option>
             <option value="min"> - Fuerza</option>
           </select>

@@ -4,15 +4,7 @@ const Card = ({ image, name, types }) => {
   return (
     <div className={Style.card}>
       <div className={Style.imgContainer}>
-        <img
-          src={
-            image
-              ? image
-              : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/71.svg"
-          }
-          alt="img"
-          className={Style.img}
-        />
+        <img src={image} alt="img" className={Style.img} />
       </div>
       <h2 className={Style.title}>{name}</h2>
       <h4 className={Style.description}>

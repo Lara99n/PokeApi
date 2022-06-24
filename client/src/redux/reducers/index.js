@@ -23,7 +23,7 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case ACCIONES.ORDEN_NAME:
-      let ordenAlf = [...state.pokemon];
+      let ordenAlf = [...state.allPokemons];
       const alfabetico =
         action.payload === "asc"
           ? ordenAlf.sort((a, b) => {
@@ -42,7 +42,7 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case ACCIONES.ORDEN_FUERZA:
-      const infoFuerza = [...state.pokemon];
+      const infoFuerza = [...state.allPokemons];
       const ordenFuerza =
         action.payload === "All"
           ? infoFuerza
@@ -55,31 +55,35 @@ const rootReducer = (state = initialState, action) => {
         pokemon: ordenFuerza,
       };
 
-    case ACCIONES.POKEMON_DB_API:
-      const info = state.allPokemons;
-      const infoCreated =
-        action.payload === "created"
-          ? info.filter((e) => e.baseDatos)
-          : info.filter((e) => !e.baseDatos);
-
-      return {
-        ...state,
-        pokemon: action.payload === "All" ? info : infoCreated,
-      };
-
     case ACCIONES.FILTER_POKE_TYPE:
       const typesInfo = state.allPokemons;
       const infoTypes =
         action.payload === "All"
           ? typesInfo
           : typesInfo.filter((e) =>
-              e.types.find((e) => e.name === action.payload)
+              e.types.find((e) => e.name.includes(action.payload))
             );
+      while (infoTypes.length !== 0) {
+        return {
+          ...state,
+          pokemon: infoTypes,
+        };
+      }
+      alert("No encontramos un pokemon con ese tipo :(");
 
-      return {
-        ...state,
-        pokemon: infoTypes,
-      };
+    case ACCIONES.POKEMON_DB_API:
+      const info = state.allPokemons;
+      const infoCreated =
+        action.payload === "created"
+          ? info.filter((e) => e.baseDatos)
+          : info.filter((e) => !e.baseDatos);
+      while (infoCreated.length !== 0) {
+        return {
+          ...state,
+          pokemon: action.payload === "All" ? info : infoCreated,
+        };
+      }
+      alert("No encontramos pokemons creados, crea tu pokemon!!!!");
 
     case ACCIONES.POKE_DETAIL:
       return {
@@ -96,6 +100,12 @@ const rootReducer = (state = initialState, action) => {
     case ACCIONES.POKE_CREATE:
       return {
         ...state,
+      };
+
+    case ACCIONES.DELETE_POKE:
+      return {
+        ...state,
+        detalle: [],
       };
 
     default:

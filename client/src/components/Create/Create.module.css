@@ -1,4 +1,7 @@
 .btn {
+    position: relative;
+   
+    bottom: 70px;
     background-color: rgba(241, 249, 8, 0.696);
     border: none;
     padding: 10px;

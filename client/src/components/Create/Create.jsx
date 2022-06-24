@@ -3,6 +3,8 @@ import { pokeTypes, pokeCreate } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
+import Swal from "sweetalert2";
+
 import Style from "./Create.module.css";
 import axios from "axios";
 
@@ -71,10 +73,12 @@ const Create = () => {
   };
 
   const handleTypes = (e) => {
-    setState({
-      ...state,
-      types: [...state.types, e.target.value],
-    });
+    if (!state.types.includes(e.target.value)) {
+      setState({
+        ...state,
+        types: [...state.types, e.target.value],
+      });
+    }
     setError(
       validate({
         ...state,
@@ -138,8 +142,15 @@ const Create = () => {
         );
       else {
         dispatch(pokeCreate(state));
-        alert("¡Pokemon creado!");
-        navigate("/home");
+        Swal.fire({
+          icon: "success",
+          title: "Pokemon creado!!",
+          showConfirmButton: false,
+          timer: 900,
+        });
+        setTimeout(() => {
+          navigate("/home");
+        }, 1000);
       }
     }
   }

@@ -39,16 +39,13 @@ a {
 }
 
 .gif img{
-    width: 400px;
-    width: 250px;
-    
-
+    width: 16.4%;
 }
 
 .loading{
    font-family: 'Press Start 2P', cursive;
    font-size: 23px;
-   margin-top: 0.5%;
+   margin-top: 0.7%;   
 }
 
 

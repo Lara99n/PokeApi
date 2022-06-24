@@ -4,7 +4,7 @@ import { buscarNombrePokemon } from "../../redux/actions";
 
 import Style from "./Searchbar.module.css";
 
-function SearchBar() {
+function SearchBar({ setPaginaActual }) {
   const [name, setName] = useState("");
 
   const dispatch = useDispatch();
@@ -13,6 +13,7 @@ function SearchBar() {
     e.preventDefault();
     if (name) {
       dispatch(buscarNombrePokemon(name));
+      setPaginaActual(1);
       console.log("enviado");
       setName("");
     }
@@ -26,7 +27,6 @@ function SearchBar() {
   return (
     <div>
       <br />
-
       <input
         type="text"
         placeholder="Buscar Pokemon :)"

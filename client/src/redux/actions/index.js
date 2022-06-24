@@ -12,10 +12,12 @@ export const FILTER_POKE_TYPE = " FILTER_POKE_TYPE";
 export const POKE_DETAIL = "POKE_DETAIL";
 export const POKE_CREATE = "POKE_CREATE";
 
+export const DELETE_POKE = "DELETE_POKE";
+
 export function todosPokemons() {
   return async (dispatch) => {
     try {
-      let obtener = await axios(`http://localhost:3001/pokemons`);
+      let obtener = await axios(`https://appokemons.herokuapp.com/pokemons`);
 
       return dispatch({
         type: ALL_POKEMONS,
@@ -30,7 +32,9 @@ export function todosPokemons() {
 export function buscarNombrePokemon(name) {
   return async (dispatch) => {
     try {
-      let obtener = await axios(`http://localhost:3001/pokemons?name=${name}`);
+      let obtener = await axios(
+        `https://appokemons.herokuapp.com/pokemons?name=${name}`
+      );
 
       return dispatch({
         type: BUSCAR_NOMBRE,
@@ -57,6 +61,12 @@ export function ordenFuerza(payload) {
   };
 }
 
+export function filterPokeTypes(payload) {
+  return {
+    type: FILTER_POKE_TYPE,
+    payload,
+  };
+}
 export function pokemonsDbOrPokeapi(payload) {
   return {
     type: POKEMON_DB_API,
@@ -64,16 +74,12 @@ export function pokemonsDbOrPokeapi(payload) {
   };
 }
 
-export function filterPokeTypes(payload) {
-  return {
-    type: FILTER_POKE_TYPE,
-    payload,
-  };
-}
 export function pokeDetail(id) {
   return async (dispatch) => {
     try {
-      let obtener = await axios("http://localhost:3001/pokemons/" + id);
+      let obtener = await axios(
+        "https://appokemons.herokuapp.com/pokemons/" + id
+      );
 
       return dispatch({
         type: POKE_DETAIL,
@@ -87,7 +93,7 @@ export function pokeDetail(id) {
 export function pokeTypes() {
   return async (dispatch) => {
     try {
-      let obtener = await axios(`http://localhost:3001/types`);
+      let obtener = await axios(`https://appokemons.herokuapp.com/types`);
 
       return dispatch({
         type: POKE_TYPE,
@@ -102,7 +108,10 @@ export function pokeTypes() {
 export function pokeCreate(payload) {
   return async (dispatch) => {
     try {
-      let obtener = await axios.post("http://localhost:3001/pokemons", payload);
+      let obtener = await axios.post(
+        "https://appokemons.herokuapp.com/pokemons",
+        payload
+      );
 
       return dispatch({
         type: POKE_CREATE,
@@ -111,5 +120,11 @@ export function pokeCreate(payload) {
     } catch (err) {
       console.log(err);
     }
+  };
+}
+
+export function deletePoke() {
+  return {
+    type: DELETE_POKE,
   };
 }

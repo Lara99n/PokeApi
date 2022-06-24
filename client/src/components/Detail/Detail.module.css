@@ -17,11 +17,13 @@
 .btn {
     background-color: rgb(16, 66, 100);
     border: none;
-    padding: 10px;
+    padding: 13px;
     border-radius: 10px;
     color: rgba(247, 239, 239, 0.801);
-    margin-top: 1rem;
-    margin-left: 1rem;
+    position: relative;
+    
+    right: 720px;
+    bottom: 620px;
 }
 
 .btn:hover {
@@ -29,21 +31,33 @@
     background-color: rgb(34, 32, 129);
 }
 
+.imagen {
+    position: relative;
+    left: 180px;
+    bottom:350px;
+}
 .carta {
     display: flex;
     flex-direction: column;
-    height: 900px;
-    width: 600px;
+    height: 490px;
+    width: 750px;
     background-color: rgba(125, 187, 241, 0.308);
     border: 1px solid aliceblue;
     border-radius: 14px;
     transition: transform 0.15s;
-    justify-content: center;
     align-items: center;
     margin-top: 1rem;
-    font-family: 'Bangers', cursive;
-        
+    position: relative;
+    bottom: 10px;
 }
+.letras{
+  position: relative;
+  bottom: -10px;
+  left: -150px;
+  font-family: 'Bangers', cursive;
+  
+}
+
 
 .carta:hover {
     cursor: pointer;
@@ -52,6 +66,8 @@
 }
 
 .titulo {
+   position: relative;
+   bottom: 20px;
     color: rgb(16, 216, 13);
     background-color: rgba(255, 255, 255, 0.255);
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
